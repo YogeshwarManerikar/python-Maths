@@ -1,0 +1,22 @@
+#TO FIND THE DETERMINANT OF A MATRIX
+
+def minor(A,i,j):
+    X=[([x for x in row])for row in A]
+    X.pop(i)
+    for row in X:
+        row.pop(j)
+    return X
+
+def det(A):
+    if len(A)==1:
+        return A[0][0]
+    else:
+        sum=0
+        for i in range(len(A[0])):
+            sum=sum+((-1)**i)*A[0][i]*det(minor(A,0,i))
+        return sum
+
+A=[[0,0,4],[1,0,0],[0,0,1]]
+print('determinant of matrix A=',det(A))
+
+    
